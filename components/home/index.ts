@@ -1,5 +1,5 @@
 export { HeroSection } from './hero';
-export { AboutSection } from './sections/about/AboutSection';
-export { ProgramsSection } from './sections/programs/ProgramsSection';
-export { StatsSection } from './sections/stats/StatsSection';
-export { SchoolsSection } from './sections/schools/SchoolsSection';
+export { AboutSection } from './AboutSection';
+export { ProgramsSection } from './ProgramsSection';
+export { StatsSection } from './StatsSection';
+export { SchoolsSection } from '../sections/schools/SchoolsSection';
