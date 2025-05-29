@@ -1,0 +1,38 @@
+-- Create users table
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(50) NOT NULL DEFAULT 'student',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create students table
+CREATE TABLE students (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  name VARCHAR(255) NOT NULL,
+  student_id VARCHAR(50) UNIQUE NOT NULL,
+  grade_level INTEGER NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create subjects table
+CREATE TABLE subjects (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  grade_level INTEGER NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create grades table
+CREATE TABLE grades (
+  id SERIAL PRIMARY KEY,
+  student_id INTEGER REFERENCES students(id),
+  subject_id INTEGER REFERENCES subjects(id),
+  score DECIMAL(5,2) NOT NULL,
+  term VARCHAR(50) NOT NULL,
+  academic_year VARCHAR(20) NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
